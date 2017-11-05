@@ -3,7 +3,6 @@ import pymarc
 xml = 'Documents/CatalogRecords/AU_MARC/PGA-Australiana.xml'
 
 def getMarcInfo(record):
-    #for item in xml:
     try:
         title = record['245']['a']
     except TypeError:
@@ -72,19 +71,16 @@ def getMarcInfo(record):
         subjectHeading = record['650']
     except TypeError:
         subjectHeading = ''
-    try:
-        meetingNameTest = record['111']['a'] 
-    except TypeError:
-        meetingNameTest = ''
-        
 
-    print('<record>'+
+    try:    
+        print('<record>'+
                 '<title>' + title + '</title>' +
                 '<author>' + author + '</author>' +
                 '<authorDates>' + authorDates + '</authorDates>' +
                 '<isbn>' + isbn + '</isbn>' +
-                '<meetingName>' + meetingNameTest + '</meetingName>' +
                 '</record>')
+    except TypeError:
+        print('')
 
 print('<collection>')
 pymarc.map_xml(getMarcInfo, xml)
