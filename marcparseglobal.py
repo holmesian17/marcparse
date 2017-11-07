@@ -1,7 +1,8 @@
 import pymarc
 
-xml = '/home/holmesian/Documents/CatalogRecords/sandburg.xml'
-booksxml = open('/home/holmesian/Documents/CatalogRecords/test.xml', 'w')
+
+xml = '/home/holmesian/Documents/CatalogRecords/Columbia-extract-20170930-014.xml'
+booksxml = open('/home/holmesian/Documents/CatalogRecords/formatted.xml', 'w')
 
 
 def getMarcInfo(record):
@@ -121,11 +122,108 @@ def getMarcInfo(record):
         pass
 
     try:
-        subjectHeading = record.get_fields('650')
-        #print('<subjectHeading>' + subjectHeading + '</subjectHeading>')
-        booksxml.write('\t\t<subjectHeading>' + subjectHeading + '</subjectHeading>\n')
+        subjectHeading650a = record['650']['a']
+        booksxml.write('\t\t<subjectHeading>' + subjectHeading650a + '</subjectHeading>\n')
+        #print('<subjectHeading>' + subjectHeading + '</subjectHeading>')  
     except:
         pass
+    
+    try:
+        subjectHeading650ax = record['650']['a'] + '-' + record['650']['x']
+        booksxml.write('\t\t<subjectHeading>' + subjectHeading650ax + '</subjectHeading>\n')
+    except:
+        pass
+
+    try:
+        subjectHeading650ae = record['650']['a'] + '-' + record['650']['e']
+        booksxml.write('\t\t<subjectHeading>' + subjectHeading650ae + '</subjectHeading>\n')
+    except:
+        pass
+
+    try:
+        subjectHeading650av = record['650']['a'] + '-' + record['650']['v']
+        booksxml.write('\t\t<subjectHeading>' + subjectHeading650av + '</subjectHeading>\n')
+    except:
+        pass 
+
+    try:
+        subjectHeading650ay = record['650']['a'] + '-' + record['650']['y']
+        booksxml.write('\t\t<subjectHeading>' + subjectHeading650ay + '</subjectHeading>\n')
+    except:
+        pass
+
+    try:
+        subjectHeading650az = record['650']['a'] + '-' + record['650']['z']
+        booksxml.write('\t\t<subjectHeading>' + subjectHeading650az + '</subjectHeading>\n')
+    except:
+        pass
+
+    try:
+        subjectHeading650azv = record['650']['a'] + '-' + record['650']['z'] + '-' + record['650']['v']
+        booksxml.write('\t\t<subjectHeading>' + subjectHeading650azv + '</subjectHeading>\n')
+    except:
+        pass
+
+    try:
+        subjectHeading650ayz = record['650']['a'] + '-' + record['650']['y'] + '-' + record['650']['z']
+        booksxml.write('\t\t<subjectHeading>' + subjectHeading650ayz + '</subjectHeading>\n')
+    except:
+        pass
+
+    try:
+        subjectHeading650azx = record['650']['a'] + '-' + record['650']['z'] + '-' + record['650']['x']
+        booksxml.write('\t\t<subjectHeading>' + subjectHeading650azx + '</subjectHeading>\n')
+    except:
+        pass
+
+    try:
+        subjectHeading650ayx = record['650']['a'] + '-' + record['650']['y'] + '-' + record['650']['x']
+        booksxml.write('\t\t<subjectHeading>' + subjectHeading650ayx + '</subjectHeading>\n')
+    except:
+        pass        
+
+    try:
+        subjectHeading600a = record['600']['a']
+        booksxml.write('\t\t<subjectHeading>' + subjectHeading600a + '</subjectHeading>\n')
+    except:
+        pass  
+
+    try:
+        subjectHeading600ad = record['600']['a'] + '-' + record['600']['d']
+        booksxml.write('\t\t<subjectHeading>' + subjectHeading600ad + '</subjectHeading>\n')
+    except:
+        pass 
+
+    try:
+        subjectHeading600adx = record['600']['a'] + '-' + record['600']['d'] + '-' + record['600']['x']
+        booksxml.write('\t\t<subjectHeading>' + subjectHeading600adx + '</subjectHeading>\n')
+    except:
+        pass  
+
+    try:
+        subjectHeading610a = record['610']['a']
+        booksxml.write('\t\t<subjectHeading>' + subjectHeading610a + '</subjectHeading>\n')
+    except:
+        pass  
+
+    try:
+        subjectHeading647a = record['647']['a']
+        booksxml.write('\t\t<subjectHeading>' + subjectHeading647a + '</subjectHeading>\n')
+    except:
+
+        pass         
+
+    try:
+        subjectHeading648a = record['648']['a']
+        booksxml.write('\t\t<subjectHeading>' + subjectHeading648a + '</subjectHeading>\n')
+    except:
+        pass 
+
+    try:
+        subjectHeading651a = record['651']['a']
+        booksxml.write('\t\t<subjectHeading>' + subjectHeading651a + '</subjectHeading>\n')
+    except:
+        pass 
 
     #print('</record>')
     booksxml.write('\t</record>\n')
